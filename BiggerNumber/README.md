@@ -10,22 +10,19 @@ Time spent: **X** hours spent in total
 
 The following  **required** functionality is completed:
 
-* [] User can select one of the two button options shown
-* [] The user sees the background color change based on the number (button) selected
-* [] The user sees new distinct numbers displayed on the buttons after either button is tapped
+* [x] User can select one of the two button options shown
+* [x] The user sees the background color change based on the number (button) selected
+* [x] The user sees new distinct numbers displayed on the buttons after either button is tapped
 
 THe following **extensions** are implemented:
 
-* [] Custom colors selected
-* [] List anything else that you did to improve the app functionality or design!
+* [x] Custom colors selected
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+<img src='https://media.giphy.com/media/6ndGh6mP2RfYDtLz79/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ## Notes
 
@@ -33,7 +30,7 @@ Describe any challenges encountered while building the app.
 
 ## License 
 
-    Copyright [2020] [Abhijeet]
+    Copyright [2024] [Abhijeet]
     
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

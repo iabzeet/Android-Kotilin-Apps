@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         val rightNum = btnRight.text.toString().toInt()
         if ((isLeftButton && leftNum > rightNum) || (!isLeftButton && rightNum > leftNum)) {
             // Correct answer
-            backgroundView.setBackgroundColor(Color.GREEN)
+            backgroundView.setBackgroundColor(Color.CYAN)
             Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show()
         } else {
             // Wrong answer
