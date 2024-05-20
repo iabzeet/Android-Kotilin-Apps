@@ -24,6 +24,8 @@ Here's a walkthrough of implemented user stories:
 
 <img src='https://media.giphy.com/media/6ndGh6mP2RfYDtLz79/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
+GIF created with [Giphy](https://giphy.com/).
+
 ## Notes
 
 Describe any challenges encountered while building the app.
