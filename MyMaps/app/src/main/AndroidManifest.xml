@@ -25,8 +25,7 @@
              "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
         -->
         <meta-data
-            android:name="com.google.android.geo.            android:name="com.google.android.geo.API_KEY"
-"
+            android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyD3LGzZx3E-7ODwW8_knXcpe1iDtgdszkY" />
 
         <activity

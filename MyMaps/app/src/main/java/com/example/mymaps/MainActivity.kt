@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mymaps.models.Place
 import com.example.mymaps.models.UserMap
 
+const val EXTRA_USER_MAP = "EXTRA_USER_MAP"
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +35,8 @@ class MainActivity : AppCompatActivity() {
                 Log.i(TAG, "onItemClick $position")
                 //when the user taps on view in RV, navigate to new activity
                 val intent = Intent(this@MainActivity, DisplayMapActivity::class.java)
+                //value will be passed in key (string) value form
+                intent.putExtra(EXTRA_USER_MAP, userMaps[position])
                 startActivity(intent)
             }
 
