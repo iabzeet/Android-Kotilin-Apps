@@ -1,6 +1,8 @@
 package com.example.mymaps
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mymaps.models.Place
 import com.example.mymaps.models.UserMap
 
+private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +26,18 @@ class MainActivity : AppCompatActivity() {
         //1.set layout manager -- tells rv how to layout the views on the screen
         rvMaps.layoutManager = LinearLayoutManager(this)
         //2.set adapter -- responsible for taking data (user maps) and binding it to a particular view in rv
-        rvMaps.adapter = MapsAdapter(this, userMaps)
+
+        //passing the instance of that interface
+        //passing implementation of that interface
+        rvMaps.adapter = MapsAdapter(this, userMaps, object: MapsAdapter.OnClickListener {
+            override fun onItemClick(position: Int) {
+                Log.i(TAG, "onItemClick $position")
+                //when the user taps on view in RV, navigate to new activity
+                val intent = Intent(this@MainActivity, DisplayMapActivity::class.java)
+                startActivity(intent)
+            }
+
+        })
     }
 
     private fun generateSampleData(): List<UserMap> {

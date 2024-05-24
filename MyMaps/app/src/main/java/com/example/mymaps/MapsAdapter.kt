@@ -11,7 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mymaps.models.UserMap
 
 private const val TAG = "MapsAdapter"
-class MapsAdapter(val context: Context, val userMaps: List<UserMap>) : RecyclerView.Adapter<MapsAdapter.ViewHolder>() {
+class MapsAdapter(val context: Context, val userMaps: List<UserMap>, val onClickListener: OnClickListener) : RecyclerView.Adapter<MapsAdapter.ViewHolder>() {
+
+    interface OnClickListener {
+        fun onItemClick(position: Int)
+    }
 
     //inflate the view and wrap that inside of a VH
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,14 +29,16 @@ class MapsAdapter(val context: Context, val userMaps: List<UserMap>) : RecyclerV
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val userMap = userMaps[position]
         //setting a clicklistener on itemview
+        //what we'd like is mainactivity to be notified of the taps
         holder.itemView.setOnClickListener {
             Log.i(TAG, "Tapped on position $position")
+            onClickListener.onItemClick(position)
         }
         val textViewTitle = holder.itemView.findViewById<TextView>(android.R.id.text1)
         textViewTitle.text = userMap.title
     }
 
-    //VH takes the contructor of the parent class which is itemview
+    //VH takes the constructor of the parent class which is itemview
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     }
