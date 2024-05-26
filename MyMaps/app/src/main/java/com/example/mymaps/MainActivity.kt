@@ -70,6 +70,7 @@ class MainActivity : AppCompatActivity() {
                 //value will be passed in key (string) value form
                 intent.putExtra(EXTRA_USER_MAP, userMaps[position])
                 startActivity(intent)
+                //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             }
 
         })
