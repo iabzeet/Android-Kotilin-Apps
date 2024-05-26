@@ -3,6 +3,7 @@ import android.app.Activity.RESULT_OK
 
 
 import android.app.Activity
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -22,10 +23,16 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.ObjectInputStream
+import java.io.ObjectOutputStream
 import java.nio.channels.InterruptedByTimeoutException
 
 const val EXTRA_USER_MAP = "EXTRA_USER_MAP"
 const val EXTRA_MAP_TITLE = "EXTRA_MAP_TITLE"
+private const val FILENAME = "UserMaps.data"
 private const val REQUEST_CODE = 1234
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
@@ -40,7 +47,13 @@ class MainActivity : AppCompatActivity() {
         val rvMaps = findViewById<RecyclerView>(R.id.rvMaps)
         val fabCreateMap = findViewById<FloatingActionButton>(R.id.fabCreateMap)
 
-        userMaps = generateSampleData().toMutableList()
+        //val userMapsFromFile = deserializeUserMaps(this)
+        //userMaps = generateSampleData().toMutableList()
+
+
+        //now we're not looking the sample data anymore because we have already saved it all insidde our file
+        //here we're just deserializing all the contents in that file into a mutable list and we're making that the member variable, which is how we're displaying the RV
+        userMaps = deserializeUserMaps(this).toMutableList()
 
         //set two things on rv
         //1.set layout manager -- tells rv how to layout the views on the screen
@@ -103,9 +116,37 @@ class MainActivity : AppCompatActivity() {
                 Log.i(TAG, "onActivityResult with new map title ${it.title}")
                 userMaps.add(it)
                 mapAdapter.notifyItemChanged(userMaps.size - 1)
+                serializeUserMaps(this, userMaps)
             }
         }
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    //1.given the userMap data we want to write it into the FILENAME (serialization)
+    private fun serializeUserMaps(context: Context, userMaps: List<UserMap>) {
+        Log.i(TAG, "serializeUserMaps")
+        //get the FileOutputStream and pass that to Object output stream
+        //it.writeObject(userMaps) this will write out some binary data and store it in file
+        ObjectOutputStream(FileOutputStream(getDataFile(context))).use { it.writeObject(userMaps) }
+    }
+
+    //2.reading the userMap data from the file (deserialization)
+    private fun deserializeUserMaps(context: Context) : List<UserMap> {
+        Log.i(TAG, "deserializeUserMaps")
+        val dataFile = getDataFile(context)
+        if (!dataFile.exists()) {
+            Log.i(TAG, "Data file does not exists yet.")
+            return emptyList()
+        }
+        ObjectInputStream(FileInputStream(dataFile)).use { return it.readObject() as List<UserMap> }
+    }
+
+
+    //returns the file which other methods can read from and write to
+    private fun getDataFile(context: Context) : File {
+        Log.i(TAG, "Getting file from directory ${context.filesDir}")
+        //return a file with that dir
+        return File(context.filesDir, FILENAME)
     }
 
     private fun generateSampleData(): List<UserMap> {
