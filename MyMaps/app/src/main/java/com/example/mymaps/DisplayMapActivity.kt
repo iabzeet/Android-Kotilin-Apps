@@ -3,6 +3,7 @@ package com.example.mymaps
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.widget.Toolbar
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -27,16 +28,20 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityDisplayMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        userMap = intent.getSerializableExtra(EXTRA_USER_MAP) as UserMap
+        // Set up the toolbar
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
-        //supportActionBar?.title = userMap.title
+        userMap = intent.getSerializableExtra(EXTRA_USER_MAP) as? UserMap ?: return
+
+       supportActionBar?.title = userMap.title
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         //SupportMapFragment-- does all the work to render map from api
         val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
+            .findFragmentById(R.id.map) as? SupportMapFragment
+        mapFragment?.getMapAsync(this)
     }
 
     /**
@@ -63,6 +68,5 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         Log.i(TAG, "user map to render: ${userMap.title}")
         // Add a marker in Sydney and move the camera
-        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 1000, 1000, 0))
-    }
-}
+        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 1000, 1000, 0)) }}
+

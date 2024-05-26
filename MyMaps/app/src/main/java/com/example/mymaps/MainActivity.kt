@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.ActivityResult
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymaps.models.Place
@@ -57,6 +58,8 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             //get new map data from the data object
+        //    val userMap = data?.getSerializableExtra(EXTRA_USER_MAP) as UserMap
+        //    Log.i(TAG, "onActivityResult with new map title ${userMap.title}")
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
