@@ -29,12 +29,11 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(binding.root)
 
         // Set up the toolbar
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        //val toolbar: Toolbar = findViewById(R.id.toolbar)
+        //setSupportActionBar(toolbar)
 
         userMap = intent.getSerializableExtra(EXTRA_USER_MAP) as? UserMap ?: return
-
-       supportActionBar?.title = userMap.title
+        supportActionBar?.title = userMap.title
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
