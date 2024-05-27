@@ -6,7 +6,6 @@ plugins {
 android {
     namespace = "com.example.rvpractice"
     compileSdk = 34
-
     defaultConfig {
         applicationId = "com.example.rvpractice"
         minSdk = 24
