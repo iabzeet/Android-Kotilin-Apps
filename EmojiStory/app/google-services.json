@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "215085893990",
+    "project_id": "emojistory-bed5b",
+    "storage_bucket": "emojistory-bed5b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215085893990:android:eebb5c2f2eca5e935ea0a7",
+        "android_client_info": {
+          "package_name": "com.example.emojistory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215085893990-gj9dh8v1hd4h7rhgeugh1bqvd2legpvd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.emojistory",
+            "certificate_hash": "b2a5030bfc400dcc7de3ba723afe07bf05cd079b"
+          }
+        },
+        {
+          "client_id": "215085893990-nr6dj5vhgr58nvrkqn9imtuoruddk6o4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzUlzunN8nMqUr4h4zCT-tagq3eSJoLuw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215085893990-nr6dj5vhgr58nvrkqn9imtuoruddk6o4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
